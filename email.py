@@ -23,7 +23,9 @@ with smtplib.SMTP_SSL("smtp.gmail.com", port, context=context) as server:
 
 
 ## NEXT STEPS:
-## Expand to multiple emails
+##finish basic email script and test
+## Expand to multiple email addresses
 ## Include attachments
+## Update message variables to the Lender Submission Template
 ## Establish dictionary of lenders --> main and CC emails
 ## Send the same email multiple times (same exact email, different recipients) --> Use  a loop?
