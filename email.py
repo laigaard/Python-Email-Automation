@@ -3,8 +3,8 @@ import smtplib, ssl
 
 ## Establish email variable
 port = 465
-sender_email = ""
-receiver_email = ""
+sender_email = "laigaard.dev@gmail.com"
+receiver_email = "laigaard.dev@gmail.com"
 password = input("Please enter your password: ")
 #  ^^Use getpass module to make this more secure?
 message = """\
