@@ -1,12 +1,11 @@
 ## Import Packages
-import smtplib, ssl
+import smtplib, ssl, getpass
 
 ## Establish email variable
 port = 465
 sender_email = "laigaard.dev@gmail.com"
 receiver_email = ["laigaard.dev@gmail.com","laigaard.dev+cc@gmail.com","laigaard.dev+cc2@gmail.com"]
-password = input("Please enter your password: ")
-#  ^^Use getpass module to make this more secure?
+password = getpass.getpass()
 message = """\
 Subject: Hello World
 
