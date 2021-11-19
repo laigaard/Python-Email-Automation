@@ -54,7 +54,7 @@ with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
 
 
 ## NEXT STEPS:
-## Include attachments
-## Update message variables to the Lender Submission Template
-## Establish dictionary of lenders --> main and CC emails
+## send to multiple CC emails (can't use list, "'list' object has no attribute 'encode'")
+##include multiple attachments (read up on add_header function)
+## Establish dictionary of 'lenders' --> main and CC emails
 ## Send the same email multiple times (same exact email, different recipients) --> Use  a loop?
