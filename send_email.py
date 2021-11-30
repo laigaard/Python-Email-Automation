@@ -53,7 +53,5 @@ with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
 
 
 ## NEXT STEPS:
-## send to multiple CC emails (can't use list, "'list' object has no attribute 'encode'")
-## try larger attachments, the size of typical bank statements
 ## Establish dictionary of 'lenders' --> main and CC emails
 ## Send the same email multiple times (same exact email, different recipients) --> Use  a loop?
