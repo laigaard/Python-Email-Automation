@@ -13,6 +13,7 @@ sender_email = "laigaard.dev@gmail.com"
 receiver_email = "laigaard.dev@gmail.com"
 cc_email = "laigaard.dev+cc@gmail.com"
 password = getpass.getpass()
+filename = ["testDoc.pdf", "testDoc2.pdf", "testDoc3.pdf", "testDoc4.pdf"]
 
 ## Create multipart message headers
 message = MIMEMultipart()
@@ -23,8 +24,6 @@ message["Cc"] = cc_email
 
 ## Add body to message
 message.attach(MIMEText(body, "plain"))
-
-filename = ["testDoc.pdf", "testDoc2.pdf"]
 
 # Open PDF file in binary mode
 for file in filename:
@@ -56,5 +55,6 @@ with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
 
 ## NEXT STEPS:
 ## send to multiple CC emails (can't use list, "'list' object has no attribute 'encode'")
+## try larger attachments, the size of typical bank statements
 ## Establish dictionary of 'lenders' --> main and CC emails
 ## Send the same email multiple times (same exact email, different recipients) --> Use  a loop?
