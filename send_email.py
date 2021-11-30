@@ -11,7 +11,7 @@ subject = "Hello, World! (Attached)"
 body = "This email should have an attachment included."
 sender_email = "laigaard.dev@gmail.com"
 receiver_email = "laigaard.dev@gmail.com"
-cc_email = "laigaard.dev+cc@gmail.com"
+cc_email = "laigaard.dev+cc@gmail.com, laigaard.dev+cc2@gmail.com"
 password = getpass.getpass()
 filename = ["testDoc.pdf", "testDoc2.pdf", "testDoc3.pdf", "testDoc4.pdf"]
 
@@ -29,7 +29,6 @@ message.attach(MIMEText(body, "plain"))
 for file in filename:
     with open(file, "rb") as attachment:
         # Add file as application/octet-stream
-        # Email client can usually download this automatically as attachment
         part = MIMEBase("application", "octet-stream")
         part.set_payload(attachment.read())
 
