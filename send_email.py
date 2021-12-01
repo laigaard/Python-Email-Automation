@@ -13,7 +13,7 @@ sender_email = "laigaard.dev@gmail.com"
 receiver_email = "laigaard.dev@gmail.com"
 cc_email = "laigaard.dev+cc@gmail.com, laigaard.dev+cc2@gmail.com"
 password = getpass.getpass()
-filename = ["testDoc.pdf", "testDoc2.pdf", "testDoc3.pdf", "testDoc4.pdf"]
+filename = ["testDoc.pdf", "statement1.pdf", "statement2.pdf", "statement3.pdf",]
 
 ## Create multipart message headers
 message = MIMEMultipart()
