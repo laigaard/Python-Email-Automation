@@ -1,14 +1,17 @@
 ## Import Packages
-import smtplib, ssl, getpass, email
+import smtplib, ssl, getpass, email, time
 
 from email import encoders
 from email.mime.base import MIMEBase
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
+# Start script timer
+start = time.time()
+
 ## Establish email variables
-subject = "Hello, World! (Attached)"
-body = "This email should have an attachment included."
+subject = "New Funding Submission from Laigaard Capital"
+body = "ISO Laigaard Capital would like to submit a funding application from a business we feels meets your qualifications, please let me know if you need anything else.\n\nThank you!"
 sender_email = "laigaard.dev@gmail.com"
 receiver_email = "laigaard.dev@gmail.com"
 cc_email = "laigaard.dev+cc@gmail.com, laigaard.dev+cc2@gmail.com"
@@ -50,6 +53,12 @@ context = ssl.create_default_context()
 with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
     server.login(sender_email, password)
     server.sendmail(sender_email, receiver_email, text)
+
+# End script timer and print results
+end = time.time()
+result = end - start
+print("Email Sent.")
+print(f"It took {result} seconds to send.")
 
 
 ## NEXT STEPS:
