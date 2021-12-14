@@ -62,5 +62,7 @@ print(f"It took {result} seconds to send.")
 
 
 ## NEXT STEPS:
+## Build email in script, use function to actually send email - this will make loop easier
 ## Establish dictionary of 'lenders' --> main and CC emails
 ## Send the same email multiple times (same exact email, different recipients) --> Use  a loop?
+## create readme file for github - what this script does, why it was made, references that influenced the code (real python, github project)
