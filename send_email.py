@@ -11,12 +11,12 @@ start = time.time()
 
 ## Establish email variables
 subject = "New Funding Submission from Laigaard Capital"
-body = "ISO Laigaard Capital would like to submit a funding application from a business we feels meets your qualifications, please let me know if you need anything else.\n\nThank you!"
+body = "Laigaard Capital would like to submit a funding application from a business we feels meets your qualifications, please let me know if you need anything else.\n\nThank you!"
 sender_email = "laigaard.dev@gmail.com"
 receiver_email = "laigaard.dev@gmail.com"
 cc_email = "laigaard.dev+cc@gmail.com, laigaard.dev+cc2@gmail.com"
 password = getpass.getpass()
-filename = ["testDoc.pdf", "statement1.pdf", "statement2.pdf", "statement3.pdf",]
+filename = ["files/testDoc.pdf", "files/statement1.pdf", "files/statement2.pdf", "files/statement3.pdf",]
 
 # Log in to server using secure context and send email || Create Function to send message.
 def send_message():
