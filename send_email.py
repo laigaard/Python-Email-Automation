@@ -18,7 +18,14 @@ cc_email = "laigaard.dev+cc@gmail.com, laigaard.dev+cc2@gmail.com"
 password = getpass.getpass()
 filename = ["testDoc.pdf", "statement1.pdf", "statement2.pdf", "statement3.pdf",]
 
-## Create multipart message headers
+# Log in to server using secure context and send email || Create Function to send message.
+def send_message():
+    context = ssl.create_default_context()
+    with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
+        server.login(sender_email, password)
+        server.sendmail(sender_email, receiver_email, text)
+
+## Create MIMEMultipart message headers
 message = MIMEMultipart()
 message["From"] = sender_email
 message["To"] = receiver_email
@@ -48,11 +55,7 @@ for file in filename:
         message.attach(part)
         text = message.as_string()
 
-# Log in to server using secure context and send email
-context = ssl.create_default_context()
-with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
-    server.login(sender_email, password)
-    server.sendmail(sender_email, receiver_email, text)
+send_message()
 
 # End script timer and print results
 end = time.time()
