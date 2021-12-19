@@ -16,7 +16,17 @@ sender_email = "laigaard.dev@gmail.com"
 receiver_email = "laigaard.dev@gmail.com"
 cc_email = "laigaard.dev+cc@gmail.com, laigaard.dev+cc2@gmail.com"
 password = getpass.getpass()
-filename = ["files/testDoc.pdf", "files/statement1.pdf", "files/statement2.pdf", "files/statement3.pdf",]
+filename = ["files/testDoc.pdf", "files/statement1.pdf", "files/statement2.pdf", "files/statement3.pdf"]
+
+
+# testing lender data structures, need to update receive/cc emails in script
+# lender1 = {"name": "ABC Capital", "submission_email": "laigaard.dev@gmail.com", "cc_email": ["laigaard.dev+cc@gmail.com"]}
+# lender2 = {"name": "123 GetFunded", "submission_email": "laigaard.dev@gmail.com", "cc_email": ["laigaard.dev+cc@gmail.com","laigaard.dev+cc2@gmail.com"]}
+# lender3 = {"name": "ABC Ventures", "submission_email": "laigaard.dev@gmail.com", "cc_email": "[laigaard.dev+cc@gmail.com", "laigaard.dev+cc2@gmail.com", "laigaard.dev+cc3@gmail.com"]}
+
+# TODO: Update function/rest of script, needs to pull receiver & CC emails from group of lenders.  Add lenders to list?
+
+
 
 # Log in to server using secure context and send email || Create Function to send message.
 def send_message():
@@ -67,8 +77,4 @@ print("Email Sent.")
 print(f"It took {result} seconds to send.")
 
 
-## NEXT STEPS:
-## Build email in script, use function to actually send email - this will make loop easier
-## Establish dictionary of 'lenders' --> main and CC emails
-## Send the same email multiple times (same exact email, different recipients) --> Use  a loop?
-## create readme file for github - what this script does, why it was made, references that influenced the code (real python, github project)
+# TODO: Create readme for github
