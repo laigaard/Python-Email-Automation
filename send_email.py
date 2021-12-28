@@ -20,23 +20,26 @@ filename = ["files/testDoc.pdf", "files/statement1.pdf", "files/statement2.pdf",
 
 
 # testing lender data structures, need to update receive/cc emails in script
-# lender1 = {"name": "ABC Capital", "submission_email": "laigaard.dev@gmail.com", "cc_email": ["laigaard.dev+cc@gmail.com"]}
-# lender2 = {"name": "123 GetFunded", "submission_email": "laigaard.dev@gmail.com", "cc_email": ["laigaard.dev+cc@gmail.com","laigaard.dev+cc2@gmail.com"]}
-# lender3 = {"name": "ABC Ventures", "submission_email": "laigaard.dev@gmail.com", "cc_email": "[laigaard.dev+cc@gmail.com", "laigaard.dev+cc2@gmail.com", "laigaard.dev+cc3@gmail.com"]}
+abc_cap = {"name": "ABC Capital", "submission_email": "laigaard.dev@gmail.com", "cc_email": ["laigaard.dev+cc@gmail.com"]}
+get_funded = {"name": "123 GetFunded", "submission_email": "laigaard.dev@gmail.com", "cc_email": ["laigaard.dev+cc@gmail.com","laigaard.dev+cc2@gmail.com"]}
+xyz_vent = {"name": "XYZ Ventures", "submission_email": "laigaard.dev@gmail.com", "cc_email": ["laigaard.dev+cc@gmail.com", "laigaard.dev+cc2@gmail.com", "laigaard.dev+cc3@gmail.com"]}
 
-# TODO: Update function/rest of script, needs to pull receiver & CC emails from group of lenders.  Add lenders to list?
+lenders = [abc_cap, get_funded, xyz_vent]
 
 
-
-# Log in to server using secure context and send email || Create Function to send message.
+# Create Function to send message.
 def send_message():
     i = 0
-    while i < 2:
+    while i < len(lenders):
+        # receiver_email = lenders[i]["submission_email"]
+        # cc_email = lenders[i]["cc_email"]                 this is a list, strip/split list?  can't use list in email script
         context = ssl.create_default_context()
         with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
             server.login(sender_email, password)
             server.sendmail(sender_email, receiver_email, text)
         i += 1
+
+        # todo - MIMEMultipart message created in the function, may be easiest to just create whole header in the function
 
 ## Create MIMEMultipart message headers
 message = MIMEMultipart()
@@ -67,6 +70,8 @@ for file in filename:
         # Add attachment to message and convert message to string
         message.attach(part)
         text = message.as_string()
+
+
 
 send_message()
 
