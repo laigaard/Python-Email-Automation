@@ -13,15 +13,14 @@ start = time.time()
 subject = "New Funding Submission from Laigaard Capital"
 body = "Laigaard Capital would like to submit a funding application from a business we feels meets your qualifications, please let me know if you need anything else.\n\nThank you!"
 sender_email = "laigaard.dev@gmail.com"
-cc_email = "laigaard.dev+cc@gmail.com, laigaard.dev+cc2@gmail.com"
 password = getpass.getpass()
 filename = ["files/testDoc.pdf", "files/statement1.pdf", "files/statement2.pdf", "files/statement3.pdf"]
 
 
 # testing lender data structures, need to update receive/cc emails in script
-abc_cap = {"name": "ABC Capital", "submission_email": "laigaard.dev@gmail.com", "cc_email": ["laigaard.dev+cc@gmail.com"]}
-get_funded = {"name": "123 GetFunded", "submission_email": "test.dev7105@gmail.com", "cc_email": ["laigaard.dev+cc@gmail.com","laigaard.dev+cc2@gmail.com"]}
-xyz_vent = {"name": "XYZ Ventures", "submission_email": "laigaard.dev@gmail.com", "cc_email": ["laigaard.dev+cc@gmail.com", "laigaard.dev+cc2@gmail.com", "laigaard.dev+cc3@gmail.com"]}
+abc_cap = {"name": "ABC Capital", "submission_email": "laigaard.dev@gmail.com", "cc_email": ["test.dev7105@gmail.com"]}
+get_funded = {"name": "123 GetFunded", "submission_email": "test.dev7105@gmail.com", "cc_email": ["laigaard.dev@gmail.com","laigaard.dev+cc@gmail.com"]}
+xyz_vent = {"name": "XYZ Ventures", "submission_email": "test.dev7105@gmail.com", "cc_email": ["laigaard.dev+cc@gmail.com", "test.dev7105@gmail.com", "test.dev7105+cc@gmail.com"]}
 
 lenders = [abc_cap, get_funded, xyz_vent]
 
@@ -31,14 +30,20 @@ def send_message():
     i = 0
     while i < len(lenders):
         receiver_email = lenders[i]["submission_email"]
-        # cc_email = lenders[i]["cc_email"]                 this is a list, strip/split list?  can't use list in email script
+        cc_list = lenders[i]["cc_email"]
+        cc_email_str = ''
+        for cc in cc_list:
+            if len(cc_list) == 1:
+                cc_email_str += cc
+            else:
+                cc_email_str += cc + ','
 
         ## Create MIMEMultipart message headers
         message = MIMEMultipart()
         message["From"] = sender_email
         message["To"] = receiver_email
         message["Subject"] = subject
-        message["Cc"] = cc_email
+        message["Cc"] = cc_email_str
 
         ## Add body to message
         message.attach(MIMEText(body, "plain"))
