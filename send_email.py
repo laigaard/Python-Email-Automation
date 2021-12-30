@@ -1,4 +1,4 @@
-    ## Import Packages
+## Import Packages
 import smtplib, ssl, getpass, email, time
 
 from email import encoders
@@ -6,26 +6,26 @@ from email.mime.base import MIMEBase
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
-# Start script timer
+## Start script timer
 start = time.time()
 
-## Establish email variables
+## Establish email variables that are the same for all emails
 subject = "New Funding Submission from Laigaard Capital"
 body = "Laigaard Capital would like to submit a funding application from a business we feels meets your qualifications, please let me know if you need anything else.\n\nThank you!"
 sender_email = "laigaard.dev@gmail.com"
 password = getpass.getpass()
-filename = ["files/testDoc.pdf", "files/statement1.pdf", "files/statement2.pdf", "files/statement3.pdf"]
+attach_files = ["files/testDoc.pdf", "files/statement1.pdf", "files/statement2.pdf", "files/statement3.pdf"]
 
-
-# testing lender data structures, need to update receive/cc emails in script
+## Establish a dictionary for each lender you work with
 abc_cap = {"name": "ABC Capital", "submission_email": "laigaard.dev@gmail.com", "cc_email": ["test.dev7105@gmail.com"]}
-get_funded = {"name": "123 GetFunded", "submission_email": "test.dev7105@gmail.com", "cc_email": ["laigaard.dev@gmail.com","laigaard.dev+cc@gmail.com"]}
-xyz_vent = {"name": "XYZ Ventures", "submission_email": "test.dev7105@gmail.com", "cc_email": ["laigaard.dev+cc@gmail.com", "test.dev7105@gmail.com", "test.dev7105+cc@gmail.com"]}
+get_funded = {"name": "123 GetFunded", "submission_email": "test.dev7105@gmail.com", "cc_email": ["laigaard.dev@gmail.com",""]}
+xyz_vent = {"name": "XYZ Ventures", "submission_email": "", "cc_email": ["laigaard.dev@gmail.com", "test.dev7105@gmail.com", ""]}
 
+## Add the lenders to a list, only add lenders you want to send this specific email to
 lenders = [abc_cap, get_funded, xyz_vent]
 
 
-# Create Function to send message.
+## Function to loop through lender list and send an email to each one
 def send_message():
     i = 0
     while i < len(lenders):
@@ -37,6 +37,7 @@ def send_message():
                 cc_email_str += cc
             else:
                 cc_email_str += cc + ','
+        print(cc_email_str)
 
         ## Create MIMEMultipart message headers
         message = MIMEMultipart()
@@ -48,23 +49,16 @@ def send_message():
         ## Add body to message
         message.attach(MIMEText(body, "plain"))
 
-        # Open PDF file in binary mode
-        for file in filename:
+        ## Add attachment to message
+        for file in attach_files:
             with open(file, "rb") as attachment:
-                # Add file as application/octet-stream
                 part = MIMEBase("application", "octet-stream")
                 part.set_payload(attachment.read())
-
-                # Encode file in ASCII characters to send by email
                 encoders.encode_base64(part)
-
-                # Add header as key/value pair to attachment part
                 part.add_header(
                     "Content-Disposition",
                     f"attachment; filename= {file}",
                 )
-
-                # Add attachment to message and convert message to string
                 message.attach(part)
                 text = message.as_string()
 
@@ -74,10 +68,9 @@ def send_message():
             server.sendmail(sender_email, receiver_email, text)
         i += 1
 
-
 send_message()
 
-# End script timer and print results
+## End script timer and print results
 end = time.time()
 result = end - start
 print("Email Sent.")
