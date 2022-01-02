@@ -12,8 +12,8 @@ I thought it would be interesting to explore how much of this process could be a
 
 The project started by going through a Real Python article by Joska de Langen called "Sending Emails With Python" and was then adapted and expanded to meets the scope of this project.  (link: https://realpython.com/python-send-email/)
   
-I'd also like to reference a GitHub project by user carnal0wnage titled "Python code for sending HTML email (Attachments + Multiple Recipients)".  This script helped me visualize the logic needed to re-package much of my simple script into a function so the script could go from sending to one recipient to multiple.
+I'd also like to reference a GitHub project by user carnal0wnage titled "Python code for sending HTML email (Attachments + Multiple Recipients)".  This script helped me visualize the logic needed to re-package much of my simple script into a function so the script could go from sending to one recipient to multiple. (link: https://gist.github.com/carnal0wnage/c44df39bd3b45c7d87351b1ce87fe8fe)
 
 
 
-* TODO: Add Instructions once it's converted to a template, explain why CC was removed. *
+* TODO: Add Instructions once it's converted to a template, explain why CC was removed.
