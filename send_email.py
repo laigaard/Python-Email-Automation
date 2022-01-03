@@ -6,24 +6,21 @@ from email.mime.base import MIMEBase
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
-## Start script timer
-start = time.time()
-
 ## Establish email variables that are the same for all emails
 applicant_name = "A Small Business Co."
 subject = f"New Funding Submission from Laigaard Capital - {applicant_name}"
-body = "Laigaard Capital would like to submit a funding application from a business we feels meets your qualifications, please let me know if you need anything else.\n\nThank you!"
+# body = "Laigaard Capital would like to submit a funding application from a business we feels meets your qualifications, please let me know if you need anything else.\n\nThank you!"
 sender_email = "laigaard.dev@gmail.com"
 password = getpass.getpass()
 attach_files = ["files/testDoc.pdf", "files/statement1.pdf", "files/statement2.pdf", "files/statement3.pdf"]
 
 ## Establish a dictionary for each lender you work with
-abc_cap = {"name": "ABC Capital", "submission_email": "laigaard.dev@gmail.com", "cc_email": ["test.dev7105@gmail.com", "laigaard.dev+cc@gmail.com"]}
-get_funded = {"name": "123 GetFunded", "submission_email": "", "cc_email": [""]}
-xyz_vent = {"name": "XYZ Ventures", "submission_email": "", "cc_email": [""]}
+abc_cap = {"name": "ABC Capital", "submission_email": "", "cc_email": ["", ""]}
+get_funded = {"name": "123 GetFunded", "submission_email": "", "cc_email": ["", ""]}
+xyz_vent = {"name": "XYZ Ventures", "submission_email": "", "cc_email": ["", ""]}
 
 ## Add the lenders to a list, only add lenders you want to send this specific email to
-lenders = [abc_cap]
+lenders = [abc_cap, get_funded, xyz_vent]
 
 ## Function to loop through lender list and send an email to each one
 def send_message():
@@ -37,6 +34,9 @@ def send_message():
         for cc in cc_list:
             cc_list_str += cc + ", "
             receiver_email_final.append(cc)
+
+        lender_name = lenders[i]["name"]
+        body = f"Laigaard Capital would like to submit a funding application from a business we feel meets {lender_name}'s qualifications, please let me know if you need anything else.\n\nThank you!"
 
         ## Create MIMEMultipart message headers
         message = MIMEMultipart()
@@ -69,9 +69,3 @@ def send_message():
         i += 1
 
 send_message()
-
-## End script timer and print results
-end = time.time()
-result = end - start
-print("Email Sent.")
-print(f"It took {result} seconds to send.")
