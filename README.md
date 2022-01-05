@@ -5,11 +5,9 @@ This script was designed to solve a time consuming issue that a business loan br
 This branch, named "example", is set with some examples to dummy emails I set up for testing.
 
 
+---
 
-
-
-
-### References
+## References
 
 The project started by going through a Real Python article by Joska de Langen called "Sending Emails With Python" and was then adapted and expanded to meets the scope of this task.  (link: https://realpython.com/python-send-email/)
   
