@@ -1,10 +1,8 @@
 ## Python Email Automation Script
 
-This script was designed to solve a time consuming issue that a business loan broker faces on a daily basis: sending the same email separately to multiple lending companies.  This branch, named "example", is set with some examples to dummy emails I set up for testing.
+This script was designed to solve a time consuming issue that a business loan broker faces on a daily basis: sending the same email separately to multiple lending companies.  
 
-As a loan broker, you'll often need to submit a signed application and bank statements to various lenders that the business may qualify with.  It is a simple task that can quickly take up an hour or two of the workday depending on how many applications you have to submit.
-
-I thought it would be interesting to explore how much of this process could be automated via scripting.  While it is all technically possible, it is worth mentioning that this specific script likely couldn't be used in a professional setting without some tweaks as it requires the user to lower the security on their gmail account.  Google offers an API to address this problem, that I plan to look into for future iterations of the script.
+This branch, named "example", is set with some examples to dummy emails I set up for testing.
 
 
 
