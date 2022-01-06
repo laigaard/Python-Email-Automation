@@ -7,19 +7,19 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 ## Establish global variables that are the same for all emails
-applicant_name = "A Small Business Co."
-subject = f"New Funding Submission from Laigaard Capital - {applicant_name}"     # set this up with an f-string to potentially expand code to send multiple applicants to various lenders all at once
-sender_email = "laigaard.dev@gmail.com"
+applicant_name = ""
+subject = ""
+sender_email = ""
 password = getpass.getpass()
-attachment_files = ["files/testDoc.pdf", "files/statement1.pdf", "files/statement2.pdf", "files/statement3.pdf"]
+attachment_files = []
 
 ## Establish a dictionary for each lender you work with
-abc_cap = {"name": "ABC Capital", "submission_email": "laigaard.dev@gmail.com", "cc_email": ["test.dev7105@gmail.com"]}
-get_funded = {"name": "123 GetFunded", "submission_email": "test.dev7105@gmail.com", "cc_email": ["laigaard.dev@gmail.com", "test.dev7501@gmail.com"]}
-xyz_vent = {"name": "XYZ Ventures", "submission_email": "test.dev7501@gmail.com", "cc_email": ["laigaard.dev@gmail.com", "test.dev7105@gmail.com", "test.dev7501+cc@gmail.com"]}
+abc_cap = {"name": "", "submission_email": "", "cc_email": []}
+get_funded = {"name": "", "submission_email": "", "cc_email": []}
+xyz_vent = {"name": "", "submission_email": "", "cc_email": []}
 
 ## Create a list with all the lenders you want this email to go to
-lenders = [abc_cap, get_funded]
+lenders = []
 
 
 ## Function to loop through lenders list and send emails to each one
@@ -43,7 +43,7 @@ def send_message():
 
         ## Create email body and customize the lender's name to keep a personalized feel
         lender_name = lenders[i]["name"]
-        body = f"Laigaard Capital would like to submit a funding application from a business we feel meets {lender_name}'s qualifications, please let me know if you need anything else.\n\nThank you!"
+        body = f"{lender_name}"
 
         ## Create MIMEMultipart message headers
         message = MIMEMultipart()

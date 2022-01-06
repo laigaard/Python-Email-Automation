@@ -7,6 +7,7 @@ As a loan broker, you'll often need to submit a signed application and bank stat
 I thought it would be interesting to explore how much of this process could be automated via scripting.  While it is all technically possible, it is worth mentioning that this specific script couldn't be used in production as it.  It requires the user to lower the security on their gmail account, which conflicts with the higher security settings most Financial Services companies abide by.
 
 Google offers an API to address this problem, and down the road I plan to incorporate that into this script so it can be production ready.
+
 ---
 ## Instructions for Use
 
