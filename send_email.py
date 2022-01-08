@@ -10,20 +10,20 @@ from email.mime.text import MIMEText
 subject = ""
 sender_email = ""
 password = getpass.getpass()
-attachment_files = []
+attachment_files = [] # this will be a list of strings containing the path to each file (ex: "files/statement1.pdf")
 
 ## 2. Establish a dictionary for each lender you work with (change variable names as needed, cc_email should be a list of strings)
 abc_cap = {"name": "", "submission_email": "", "cc_email": []}
 get_funded = {"name": "", "submission_email": "", "cc_email": []}
 xyz_vent = {"name": "", "submission_email": "", "cc_email": []}
 
-## 3. Create a list with all the lenders you want this email to go to
+## 3. Create a list only including the lenders you want this specific email to go to
 lenders = []
 
 
 ## Function to loop through lenders list and send emails to each one
 def send_message():
-    ## Establish local variables
+    ## Establish some local variables
     i = 0
     receiver_email_final = []
 
@@ -68,7 +68,6 @@ def send_message():
                 text = message.as_string()
 
         ## Login to mail server and send message to recipient list via SMTP, this can be left as is if using gmail
-        ## receiver_email_final is used here instead of receiver_email to ensure all Cc's receive the email
         context = ssl.create_default_context()
         with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
             server.login(sender_email, password)
