@@ -1,7 +1,5 @@
 # Python Email Automation Script
 
-This script was designed to solve a time consuming issue that a business loan broker faces on a daily basis: sending the same email separately to multiple lending companies.  
-
 This branch, named "example", is set up to show you a working example of the script.  The main branch requires you to fill some key variable before using, so having a clear functioning example to reference was important for ease of use.
 
 
