@@ -20,9 +20,9 @@ To use this script you'll need to fill in a few variables to customize the email
 2. Lender Dictionaries
    - The basic structure of three dictionaries is set up for your convenience, you can copy and paste those to match the number of lenders you work with (you'll likely want to change those variable names to the lender's name).  This will only need to be done once if you set up a dictionary for each lender you work with, simply adding more as you establish partnerships.
 3. Create lender list for the email
-   - Fill the empty list with the variables corresponding to the lenders you want this applicant to be sent to.  This ensures you aren't sending applicants to lenders they won't qualify with.  You can quickly update this list for each applicant.
+   - Fill the empty list with the variables corresponding to the lenders you want this applicant to be sent to.  This ensures you aren't sending applicants to lenders they won't qualify with.  This makes it easy to quickly update the list for each applicant, instead of setting up the dictionaries everytime.
 4. Body of the email (just above where the MIMEMultipart headers are created)
-   - Within the function there is a variable simply called "body" which is set up as an f-string only containing the lenders name.  Put whatever wording around the lender's name as you see fit.  The lender name is in there assuming you want something along the lines of "meets (lender's name)'s requirements.  You can remove that and just use a regular string if you prefer.
+   - Within the function there is a variable simply called "body" which is set up as an f-string only containing the lenders name.  Put whatever wording around the lender's name as you see fit.  The lender name variable is in there assuming you want something along the lines of "meets (lender's name)'s requirements".  You can remove that and just use a regular string if you prefer.
 
 ---
 ### References
